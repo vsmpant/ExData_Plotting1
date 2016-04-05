@@ -4,12 +4,6 @@ if(!exists("subData"))
     source("read_data.R")
 }
 
-## read the dat from the given CSV file.
-epcData <- read.table("household_power_consumption.txt", header = T, sep = ";", na.strings = "?")
-
-## extract the data of 1/2/2007-2/2/2007 from the table
-subData <- epcData[epcData$Date %in% c("1/2/2007","2/2/2007") ,]
-
 subMet1 <- as.numeric(subData$Sub_metering_1)
 subMet2 <- as.numeric(subData$Sub_metering_2)
 subMet3 <- as.numeric(subData$Sub_metering_3)
