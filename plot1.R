@@ -1,8 +1,8 @@
-## read the dat from the given CSV file.
-epcData <- read.table("household_power_consumption.txt", header = T, sep = ";", na.strings = "?")
-
-## extract the data of 1/2/2007-2/2/2007 from the table
-subData <- epcData[epcData$Date %in% c("1/2/2007","2/2/2007") ,]
+## Load data from file if not available
+if(!exists("subData"))
+{
+    source("read_data.R")
+}
 
 ## construct the histogram of the extracted data
 hist(as.numeric(subData$Global_active_power), 

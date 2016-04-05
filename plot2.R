@@ -1,3 +1,9 @@
+## Load data from file if not available
+if(!exists("subData"))
+{
+    source("read_data.R")
+}
+
 ## read the dat from the given CSV file.
 epcData <- read.table("household_power_consumption.txt", header = T, sep = ";", na.strings = "?")
 
