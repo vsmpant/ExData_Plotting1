@@ -4,16 +4,12 @@ if(!exists("subData"))
     source("read_data.R")
 }
 
-subMet1 <- as.numeric(subData$Sub_metering_1)
-subMet2 <- as.numeric(subData$Sub_metering_2)
-subMet3 <- as.numeric(subData$Sub_metering_3)
-datetime <- strptime(paste(subData$Date, subData$Time, sep=" "), "%d/%m/%Y %H:%M:%S") 
-globalActivePower <- as.numeric(subData$Global_active_power)
+complete_date <- strptime(paste(subData$Date, subData$Time, sep=" "), "%d/%m/%Y %H:%M:%S") 
 
 ## plot the data
-plot(datetime, subMet1, type="l", ylab="Energy Submetering", xlab="")
-lines(datetime, subMet2, type="l", col="red")
-lines(datetime, subMet3, type="l", col="blue")
+plot(complete_date, subData$Sub_metering_1, type="l", ylab="Energy Submetering", xlab="")
+lines(complete_date, subData$Sub_metering_2, type="l", col="red")
+lines(complete_date, subData$Sub_metering_3, type="l", col="blue")
 legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lty=1, lwd=2.5, col=c("black", "red", "blue"))
 
 ## write the plot to plot3.png file
